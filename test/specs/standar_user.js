@@ -46,7 +46,27 @@ describe('Login page testing', () => {
     it('open browser', () => {
         browser.url('https://www.saucedemo.com/cart.html')
     })
-    it('Verify btn checkout', async ()=> {
-        await expect(HomePage.btnContinueShop).toHaveText('CHECKOUT')
+    it('Verify btn text checkout', async ()=> {
+        await expect(HomePage.btnCheckout).toHaveText('CHECKOUT')
     })
+    it('Verify btn text continue shopp', async ()=> {
+        await expect(HomePage.btnContinueShopp).toHaveText('CONTINUE SHOPPING')
+    })
+    it('check browser', async ()=> {
+    await expect(browser).toHaveUrl('https://www.saucedemo.com/cart.html')
+    })
+})
+describe('Login page testing', () => {
+    it('open browser', () => {
+        browser.url('https://www.saucedemo.com/checkout-step-one.html')
+    })
+    it('check input name', async ()=>{
+        await HomePage.firstNameInput.setValue('shirley');
+        await HomePage.lastNameInput.setValue('seaton');
+        await HomePage.zipInput.setValue('2000');
+        await HomePage.btnContinueCheck.click();
+    })
+    it('check buy browser', async ()=> {
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-two.html')
+        })
 })

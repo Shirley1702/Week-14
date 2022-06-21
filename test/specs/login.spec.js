@@ -1,5 +1,5 @@
 const LoginPage = require('../pageobjects/login.page');
-
+/* 
 describe('Login page testing',()=> {
     beforeAll('open browser', ()=> {
         browser.url('https://www.saucedemo.com/')
@@ -28,4 +28,4 @@ describe('Login page testing',()=> {
     it('verify loginLogo to be displayed', async ()=> {
         await expect(LoginPage.loginLogo).toBeDisplayed()
     })
-});
+}); */

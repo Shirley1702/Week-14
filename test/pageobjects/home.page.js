@@ -14,11 +14,22 @@ class homePage {
     get jacketImg () { return $('#item_5_img_link > img')}
     get backpackHref () { return $('#item_4_img_link')}
     get addToCarBack () { return $('#add-to-cart-sauce-labs-backpack')}
-    get btnContinueShop () { return $('#checkout')}
+    get btnCheckout () { return $('#checkout')}
+    get btnContinueShopp () { return $('#continue-shopping')}
+    get firstNameInput () { return $('#first-name')}
+    get lastNameInput () { return $('#last-name')}
+    get zipInput () { return $('#postal-code')}
+    get btnContinueCheck () { $('#continue')}
     //Setters
     //metodos
-    async sideBarIn() {
-        await this.btnHambur.click()
+    async continueShoppClick() {
+        await this.btnContinueShopp.click()
+    }
+    async chacktOutInput(firstNameInput, lastNameInput, zipInput) {
+        await this.setFirstName(firstNameInput);
+        await this.setLastName(lastNameInput);
+        await this.setZip(zipInput);
+        await this.btnContinueCheck.click()
     }
 }
 module.exports = new homePage()
