@@ -1,4 +1,3 @@
-const loginPage = require('../pageobjects/login.page');
 const LoginPage = require('../pageobjects/login.page');
 
 describe('Login page testing',()=> {
@@ -9,7 +8,7 @@ describe('Login page testing',()=> {
         await LoginPage.login('', 'secret_sauce');
         await expect(LoginPage.errorContainer).toHaveText('Epic sadface: Username is required')
     })
-})
+});
 
 describe('Login page testing',()=> {
     beforeAll('open browser', ()=> {
@@ -29,12 +28,4 @@ describe('Login page testing',()=> {
     it('verify loginLogo to be displayed', async ()=> {
         await expect(LoginPage.loginLogo).toBeDisplayed()
     })
-})
-describe('Login page testing',()=> {
-    beforeAll('open browser', ()=> {
-        browser.url('https://www.saucedemo.com/')
-    })
-    it('Login success', async ()=>{
-        await LoginPage.login('standard_user', 'secret_sauce')
-    })
-})
+});
