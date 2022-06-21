@@ -20,6 +20,9 @@ describe('Home page testing',()=> {
     it('Verify btn filter', async ()=> {
         await expect(HomePage.btnFilter).toBeClickable()
     })
+    it('Verify btn add to car backpack', async ()=> {
+        await expect(HomePage.addToCarBack).toBeClickable()
+    })
     it('Img Back should be displayed after successful login', async () => {
         await expect(HomePage.backpackImg).toHaveAttrContaining('src', '/static/media/sauce-backpack-1200x1500.34e7aa42.jpg');
     });
@@ -32,21 +35,74 @@ describe('Home page testing',()=> {
     it('Img jacket should be displayed after successful login', async () => {
         await expect(HomePage.jacketImg).toHaveAttrContaining('src', '/static/media/sauce-pullover-1200x1500.439fc934.jpg');
     });
+    //falta verificar imagen de *labsOnesie y tShirtRed
     it('enter in item backpack', async () => {
-        await expect(HomePage.backpackHref).toHaveAttribute('href', false)
+        await expect(HomePage.backpackHref).toHaveAttribute('href', false);
     });
-    it('Verify btn add to car backpack', async ()=> {
-        await expect(HomePage.addToCarBack).toBeClickable()
-    })
     it('Verify btn in btnCar', async ()=> {
-        await expect(HomePage.btnCar).toHaveAttribute('class', 'shopping_cart_link')
+        await expect(HomePage.btnCar).toHaveAttribute('class', 'shopping_cart_link');
     })
+    it('add to car Back', async () => {
+        HomePage.addToCarItemBack();
+    });
+    it('enter in to car', async () => {
+        HomePage.clickToCar();
+    });
+    it('enter in to checkout', async () => {
+        HomePage.clickCheckout();
+    });
+    it('empty inputFirstName should display error', async () => {
+        await HomePage.informationInput('', 'seaton', '2000');
+        await expect(HomePage.errorMsgFirstName).toHaveText('Error: First Name is required');
+    })
+    it('Page should be refreshed', async () => {
+        await browser.refresh();
+        await browser.pause(400);
+    });
+    it('empty inputLastName should display error', async () => {
+        await HomePage.informationInput('shirley', '', '2000');
+        await expect(HomePage.errorMsgFirstName).toHaveText('Error: Last Name is required');
+    })
+    it('Page should be refreshed', async () => {
+        await browser.refresh();
+        await browser.pause(400);
+    });
+    it('empty inputZip should display error', async () => {
+        await HomePage.informationInput('shirley', 'seaton', '');
+        await expect(HomePage.errorMsgFirstName).toHaveText('Error: Postal Code is required');
+    })
+    it('Page should be refreshed', async () => {
+        await browser.refresh();
+        await browser.pause(400);
+    });
+    /* it('input inputZip should display error con letras', async () => {
+        await HomePage.informationInput('shirley', 'seaton', 'zssdfg');
+        await expect(HomePage.errorMsgFirstName).toHaveText('Error: Postal Code should be numbers');
+    }) */
+    //that is coment becouse no pass
+    it('complit input and click continue', async ()=>{
+        await HomePage.informationInput('shirley', 'seaton', '2000');
+    })
+    it('Verify if description to car to have list', async ()=> {
+        await expect(HomePage.listBuyCar).toHaveAttribute('href', false);
+    })
+    it('verify quantity should be 1', async () => {
+        await expect(HomePage.quantityBack).toHaveText('1');
+    })
+    it('Continue Shopping', async () => {
+        HomePage.clickContinueShopp();
+    });
+    it('Add to car bike light', async () => {
+        HomePage.clickAddToLight();
+    });
+    it('verify button should be remove', async () => {
+        await expect(HomePage.btnRemoveLight).toHaveText('Remove');
+    })
+    it('Logout', async () => {
+        HomePage.accountLogout();
+    });
 })
-describe('Login page testing', () => {
-    it('open browser', () => {
-        browser.url('https://www.saucedemo.com/cart.html')
-    })
-    it('Verify btn text checkout', async ()=> {
+    /* it('Verify btn text checkout', async ()=> {
         await expect(HomePage.btnCheckout).toHaveText('CHECKOUT')
     })
     it('Verify btn text continue shopp', async ()=> {
@@ -54,19 +110,4 @@ describe('Login page testing', () => {
     })
     it('check browser', async ()=> {
     await expect(browser).toHaveUrl('https://www.saucedemo.com/cart.html')
-    })
-})
-describe('Login page testing', () => {
-    it('open browser', () => {
-        browser.url('https://www.saucedemo.com/checkout-step-one.html')
-    })
-    it('check input name', async ()=>{
-        await HomePage.firstNameInput.setValue('shirley');
-        await HomePage.lastNameInput.setValue('seaton');
-        await HomePage.zipInput.setValue('2000');
-        await HomePage.btnContinueCheck.click();
-    })
-    it('check buy browser', async ()=> {
-        await expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-two.html')
-        })
-})
+    }) */

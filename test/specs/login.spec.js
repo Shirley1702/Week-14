@@ -1,6 +1,6 @@
 const LoginPage = require('../pageobjects/login.page');
-/* 
-describe('Login page testing',()=> {
+
+/* describe('Login page testing',()=> {
     beforeAll('open browser', ()=> {
         browser.url('https://www.saucedemo.com/')
     })
