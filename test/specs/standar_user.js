@@ -90,8 +90,6 @@ describe('Home page testing',()=> {
     it('Shoul be title of Product Back', async () => {
         await expect(HomePage.titleProductShirtRed).toHaveText('Test.allTheThings() T-Shirt (Red)');
     });
-    //falta los precios
-    //caminito
     it('Verify btn in btnCar', async ()=> {
         await expect(HomePage.btnCar).toHaveAttribute('class', 'shopping_cart_link');
     })
